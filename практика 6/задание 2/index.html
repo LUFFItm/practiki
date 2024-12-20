@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Возраст из массива</title>
+</head>
+<body>
+<h1>Вычисление возраста</h1>
+<p id="output"></p>
+
+<script>
+        const birthYears = [1990, 1985, 2000, 1975, 1995];
+
+        const currentYear = new Date().getFullYear();
+
+        const calculateAge = year => currentYear - year;
+
+        const ages = birthYears.map(year => calculateAge(year));
+        
+document.getElementById("output").innerHTML = "Возраст: " + ages.join(", ");
+</script>
+
+</body>
+</html>

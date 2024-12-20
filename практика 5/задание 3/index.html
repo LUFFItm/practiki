@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Количество дней до Нового года</title>
+</head>
+<body>
+<h1>Вычисление количества дней до Нового года</h1>
+<button onclick="daysUntilNewYear()">Посчитать количество дней до Нового года</button>
+<p id="result"></p>
+
+<script>
+const daysUntilNewYear = () => {
+const today = new Date(); // Текущая дата
+const newYear = new Date(today.getFullYear() + 1, 0, 1); // 1 января следующего года
+const timeDifference = newYear - today; // Разница во времени
+const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24)); // Переводим разницу в дни
+
+    document.getElementById("result").textContent = `До Нового года осталось ${days} дней.`;
+        };
+</script>
+</body>
+</html>

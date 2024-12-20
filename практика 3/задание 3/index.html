@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анализ массива</title>
+</head>
+<body>
+<h1>Анализ массива</h1>
+<button onclick="analyzeArray()">Анализировать массив</button>
+<p id="result"></p>
+
+<script>
+function analyzeArray() {
+// генерация массива из случайных чисел в интервале [-20, 20]
+const array = [];
+    for (let i = 0; i < 20; i++) {
+        array.push(Math.floor(Math.random() * (20 - (-20) + 1)) + (-20));
+        }
+
+// фильтрация положительных, отрицательных чисел и подсчёт нулей
+const positiveNumbers = array.filter(num => num > 0);
+const negativeNumbers = array.filter(num => num < 0);
+const zeroCount = array.filter(num => num === 0).length;
+
+    // вычисление среднего арифметического
+    const averagePositive = positiveNumbers.length > 0 
+        ? (positiveNumbers.reduce((sum, num) => sum + num, 0) / positiveNumbers.length).toFixed(2)
+        : 0;
+
+        const averageNegative = negativeNumbers.length > 0 
+            ? (negativeNumbers.reduce((sum, num) => sum + num, 0) / negativeNumbers.length).toFixed(2)
+            : 0;
+
+    // вывод результата
+    document.getElementById("result").innerHTML = `
+        Исходный массив: ${array.join(", ")}<br>
+        Среднее арифметическое положительных чисел: ${averagePositive}<br>
+        Среднее арифметическое отрицательных чисел: ${averageNegative}<br>
+        Количество нулей: ${zeroCount}
+        `;
+    }
+</script>
+</body>
+</html>

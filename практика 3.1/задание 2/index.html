@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Объекты: пользователи, заказы, рестораны</title>
+</head>
+<body>
+    <h1>Информация о пользователях, заказах и ресторанах</h1>
+    <button onclick="showInfo()">Показать информацию</button>
+    <p id="result"></p>
+
+<script>
+function showInfo() {
+const users = {
+    user1: { name: "Иван", age: 30, city: "Москва" },
+    user2: { name: "Анна", age: 25, city: "Санкт-Петербург" },
+    user3: { name: "Сергей", age: 35, city: "Новосибирск" }
+            };
+
+    const orders = {
+        order1: { user: "Иван", restaurant: "Макдоналдс", total: 450 },
+        order2: { user: "Анна", restaurant: "КФС", total: 700 },
+        order3: { user: "Сергей", restaurant: "Бургер Кинг", total: 500 }
+            };
+
+        const restaurants = {
+            "Макдоналдс": { address: "Москва" },
+            "КФС": { address: "Санкт-Петербург" },
+            "Бургер Кинг": { address: "Новосибирск" }
+            };
+
+        const output = [];
+            for (let orderKey in orders) {
+            const order = orders[orderKey];
+            const user = Object.values(users).find(u => u.name === order.user);
+                
+            if (user && user.city === "Москва") {
+                const restaurant = restaurants[order.restaurant];
+                output.push(`Пользователь: ${user.name}, Город: ${user.city}, Заказ из: ${order.restaurant}, Адрес ресторана: ${restaurant.address}, Сумма: ${order.total} руб.`);
+            }
+         }
+
+document.getElementById("result").innerHTML = output.length > 0 
+? output.join("<br>") 
+: "Нет заказов, соответствующих условиям.";
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Симулятор случайных значений</title>
+</head>
+<body>
+<h1>Симулятор случайных значений</h1>
+<button onclick="runSimulation()">Запустить симуляцию</button>
+<p id="result"></p>
+
+<script>
+function runSimulation() {
+    const iterations = 1000000; // количество симуляций
+    const colors = ['red', 'black', 'white']; // возможные значения
+    let maxStreak = { color: null, length: 0 }; // для хранения максимальной последовательности
+    let currentStreak = { color: null, length: 0 }; // текущая последовательность
+
+        // симуляция
+        for (let i = 0; i < iterations; i++) {
+        const randomValue = colors[Math.floor(Math.random() * 3)]; // генерация случайного значения
+
+        if (currentStreak.color === randomValue) {
+        currentStreak.length++; // продолжаем последовательность
+        } else {
+        if (currentStreak.length > maxStreak.length) {
+        maxStreak = { ...currentStreak }; // обновляем максимальную последовательность
+        }
+        currentStreak = { color: randomValue, length: 1 }; // начинаем новую последовательность
+        }
+    }
+
+         // последняя проверка после цикла
+         if (currentStreak.length > maxStreak.length) {
+         maxStreak = { ...currentStreak };
+    }
+
+// вывод результата
+document.getElementById("result").innerHTML = `
+    Симуляция выполнена ${iterations.toLocaleString()} раз.<br>
+    Самая длинная последовательность: ${maxStreak.length} подряд (${maxStreak.color}).
+        `;
+    }
+</script>
+</body>
+</html>

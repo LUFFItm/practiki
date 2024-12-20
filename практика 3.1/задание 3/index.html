@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Функция-конструктор: Имена группы</title>
+</head>
+<body>
+<h1>Имена участников группы</h1>
+<button onclick="showGroupNames()">Показать имена</button>
+<p id="result"></p>
+
+<script>
+
+function Group(names) {
+    this.names = names; // Список имен
+     this.showNames = function() {
+        return this.names.join(", "); 
+        };
+    }
+
+    function showGroupNames() {
+        const myGroup = new Group(["Алексей", "Дмитрий", "Евгений", "Анна", "Сергей"]);
+        document.getElementById("result").innerHTML = `
+            Участники группы: ${myGroup.showNames()}
+        `;
+     }
+</script>
+</body>
+</html>

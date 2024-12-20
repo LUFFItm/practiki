@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-5 задачи</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    }
+    h2 {
+    color: #2c3e50;
+    }
+    p, ul {
+    font-size: 16px;
+    }
+    #output {
+    margin-top: 20px;
+    }
+    </style>
+</head>
+<body>
+    <h1>1-5 задачи</h1>
+    <div id="output"></div>
+
+    <script>
+    let output = "";
+
+    // 1-10
+    output += "<div><h2>Задача 1: Счёт от 1 до 10</h2><ul>";
+    for (let i = 1; i <= 10; i++) {
+        output += `<li>${i}</li>`;
+        }
+    output += "</ul></div>";
+
+        // застолье
+    output += "<div><h2>Задача 2: Программа для застолий</h2>";
+        let response;
+     do {
+        response = prompt("Еще по одной? Введите 1 для завершения.");
+    } while (response !== "1");
+        output += "<p>Застолье окончено!</p></div>";
+
+        // вычисление факториала
+    function factorial(n) {
+        let result = 1;
+        for (let i = 1; i <= n; i++) {
+            result *= i;
+        }
+         return result;
+    }
+    let number = 5; // заменна на ваш порядковый номер
+    let fact = factorial(number);
+    output += `<div><h2>Задача 3: Факториал числа ${number}</h2><p>${fact}</p></div>`;
+
+    // проверка фамилии на палиндром
+    let lastName = prompt("Введите вашу фамилию:");
+    let normalized = lastName.toLowerCase().replace(/[^a-zа-яё]/g, "");
+    let reversed = normalized.split("").reverse().join("");
+    let isPalindrome = normalized === reversed;
+    output += `<div><h2>Задача 4: Проверка фамилии на палиндром</h2>`;
+    output += `<p>${lastName} ${isPalindrome ? "является" : "не является"} палиндромом.</p></div>`;
+
+        // простые числа до порядкового номера
+    function isPrime(num) {
+    if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+         }
+        return true;
+    }
+    let orderNumber = 20; // заменна на ваш порядковый номер
+    let primes = [];
+     for (let i = 1; i <= orderNumber; i++) {
+            if (isPrime(i)) primes.push(i);
+    }
+    output += `<div><h2>Задача 5: Простые числа до ${orderNumber}</h2>`;
+     output += `<p>${primes.join(", ")}</p></div>`;
+
+    // вывод результатов 
+    document.getElementById("output").innerHTML = output;
+    </script>
+</body>
+</html>

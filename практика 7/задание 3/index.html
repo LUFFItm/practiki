@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Определение четверти часа</title>
+</head>
+<body>
+<h1>Определение четверти часа</h1>
+<p id="output"></p>
+
+<script>
+const min = 45;  
+    let quarter;
+switch (true) {
+    case (min >= 0 && min < 15):
+        quarter = 'Первая четверть часа (0-14 минут)';
+            break;
+
+    case (min >= 15 && min < 30):
+         quarter = 'Вторая четверть часа (15-29 минут)';
+            break;
+
+    case (min >= 30 && min < 45):
+        quarter = 'Третья четверть часа (30-44 минуты)';
+            break;
+
+    case (min >= 45 && min < 60):
+        quarter = 'Четвертая четверть часа (45-59 минут)';
+            break;
+
+    default:
+        quarter = 'Некорректное значение';
+        }
+document.getElementById('output').innerHTML = `
+    Для времени ${min} минут, оно попадает в: ${quarter}
+        `;
+</script>
+
+</body>
+</html>

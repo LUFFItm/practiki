@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Задание 4 и 5</title>
+</head>
+<body>
+<h1>Задания 4 и 5</h1>
+    
+<h2>Проверка фамилии на полиндром</h2>
+<input type="text" id="surname" placeholder="Введите фамилию">
+<button onclick="checkPalindrome()">Проверить на полиндром</button>
+<p id="palindromeResult"></p>
+    
+<h2>Вычисление среднего значения массива</h2>
+<button onclick="calculateAverage()">Вычислить среднее значение</button>
+<p id="averageResult"></p>
+
+<script>
+
+const checkPalindrome = () => {
+const surname = document.getElementById("surname").value.trim();
+const normalizedSurname = surname.toLowerCase().replace(/\s+/g, '');  // Убираем пробелы и делаем строчные буквы
+const reversedSurname = normalizedSurname.split('').reverse().join('');
+            
+const result = (normalizedSurname === reversedSurname) ? "Это полиндром!" : "Это не полиндром.";
+    document.getElementById("palindromeResult").textContent = result;
+        };
+    const calculateAverage = () => {
+    const numbers = [5, 10, 15, 20, 25]; // Пример массива
+    const average = numbers.length > 0 
+            ? numbers.reduce((sum, num) => sum + num, 0) / numbers.length 
+            : 0;
+         document.getElementById("averageResult").textContent = "Среднее значение массива: " + average;
+    };
+</script>
+</body>
+</html>

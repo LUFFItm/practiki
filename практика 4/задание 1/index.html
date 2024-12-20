@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Решение заданий</title>
+</head>
+<body>
+
+<h1>Проверка на палиндром</h1>
+<input type="text" id="strInput" placeholder="Введите строку">
+<button onclick="checkPalindrome()">Проверить</button>
+<p id="palindromeResult"></p>
+
+<h1>Замена отрицательных чисел на квадраты</h1>
+<button onclick="replaceNegatives()">Преобразовать массив</button>
+<p id="arrayResult"></p>
+
+<h1>Класс, сохраняющий имя пользователя</h1>
+<button onclick="showUserName()">Показать имя</button>
+<p id="userNameResult"></p>
+
+<h1>Класс для переворачивания имени</h1>
+<button onclick="reverseName()">Перевернуть имя</button>
+<p id="reversedNameResult"></p>
+
+<script>
+    function checkPalindrome() {
+        const str = document.getElementById('strInput').value;
+        const cleanedStr = str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+        const reversedStr = cleanedStr.split('').reverse().join('');
+        const result = cleanedStr === reversedStr ? 'Это палиндром' : 'Это не палиндром';
+        document.getElementById('palindromeResult').textContent = result;
+    }
+
+    function replaceNegatives() {
+        const arr = [-3, 5, -1, 4, -8, 6, 7, -2, -5, 10, -3];
+        const modifiedArr = arr.map(num => num < 0 ? num * num : num);
+        document.getElementById('arrayResult').textContent = 'Модифицированный массив: ' + modifiedArr;
+    }
+
+    class User {
+        constructor(name) {
+            this.name = name;
+            }
+        showName() {
+            return this.name;
+            }
+        }
+
+    function showUserName() {
+        const user = new User('Иван');
+        document.getElementById('userNameResult').textContent = 'Имя пользователя: ' + user.showName();
+        }
+
+    class ReverseName {
+        constructor(name) {
+            this.name = name;
+         }
+        reverse() {
+             return this.name.split('').reverse().join('');
+            }
+        }
+
+    function reverseName() {
+        const reverse = new ReverseName('Иван');
+        document.getElementById('reversedNameResult').textContent = 'Перевернутое имя: ' + reverse.reverse();
+        }
+</script>
+
+</body>
+</html>

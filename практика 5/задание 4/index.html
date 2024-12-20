@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Задания 8, 9 и 10</title>
+</head>
+<body>
+<h1>Задания 8, 9 и 10</h1>
+    
+<!-- Задание 1: Пустая стрелочная функция -->
+<h2>Пустая стрелочная функция (возвращает undefined)</h2>
+<button onclick="emptyFunction()">Вызвать пустую функцию</button>
+<p id="emptyResult"></p>
+    
+<hr>
+    
+<!-- Задание 2: Массив и операции с ним -->
+<h2>Массив и операции с ним</h2>
+<button onclick="sumArray()">Суммировать элементы массива</button>
+<button onclick="evenNumbers()">Чётные элементы массива</button>
+<button onclick="multiplyByTwo()">Умножить каждый элемент на 2</button>
+<p id="arrayResult"></p>
+    
+<hr>
+    
+<!-- Задание 3: Фильтрация e-mail -->
+<h2>Фильтрация e-mail</h2>
+<input type="text" id="emailFilter" placeholder="Введите домен почты для фильтра">
+<button onclick="filterEmails()">Фильтровать e-mail</button>
+<ul id="emailList"></ul>
+
+<script>
+        
+const emptyFunction = () => {
+    document.getElementById("emptyResult").textContent = "Результат функции: " + undefined;
+        return undefined;
+        };
+
+        
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const sumArray = () => {
+        const sum = numbers.reduce((acc, num) => acc + num, 0);
+        document.getElementById("arrayResult").textContent = `Сумма элементов массива: ${sum}`;
+    };
+
+const evenNumbers = () => {
+     const evens = numbers.filter(num => num % 2 === 0);
+        document.getElementById("arrayResult").textContent = `Чётные числа: ${evens.join(", ")}`;
+       };
+const multiplyByTwo = () => {
+    const multiplied = numbers.map(num => num * 2);
+        document.getElementById("arrayResult").textContent = `Массив после умножения на 2: ${multiplied.join(", ")}`;
+    };
+
+    const emails = [
+            "john@example.com", "alice@workplace.com", "bob@gmail.com", "claire@example.com", "test@mail.com"
+        ];
+
+    const filterEmails = () => {
+        const filterText = document.getElementById("emailFilter").value.toLowerCase();
+        const filteredEmails = emails.filter(email => email.toLowerCase().includes(filterText));
+        const emailList = document.getElementById("emailList");
+         emailList.innerHTML = ""; // Очищаем предыдущие результаты
+
+            filteredEmails.forEach(email => {
+                const li = document.createElement("li");
+                li.textContent = email;
+                emailList.appendChild(li);
+            });
+        };
+    </script>
+</body>
+</html>

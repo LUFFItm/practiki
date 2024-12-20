@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<button class="question">Загадки</button>
+
+<script>
+
+const answer1 = "груша";
+const answer2 = "воду"; 
+
+let guesses = 0; 
+function askRiddle(riddle, correctAnswer) {
+  let userAnswer = prompt(riddle); 
+  if (userAnswer === correctAnswer) {
+    alert("Верно :)))");
+    guesses++; 
+  } else {
+    alert("Неверно :((("); 
+  }
+}
+askRiddle("Весит груша, нельзя скушать?", answer1);
+
+askRiddle("Что пьет корова?", answer2);
+
+alert("Ваши отгадки: " + guesses);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Симулятор случайных значений</title>
+</head>
+<body>
+<h1>Симулятор случайных значений</h1>
+<button onclick="runSimulation()">Запустить симуляцию</button>
+<p id="result"></p>
+
+<script>
+function runSimulation() {
+    const iterations = 1000000; // Количество симуляций
+    const results = { red: 0, black: 0, white: 0 };
+
+// симуляция
+for (let i = 0; i < iterations; i++) {
+    const randomValue = Math.floor(Math.random() * 3); // 0, 1 или 2
+        if (randomValue === 0) {
+            results.red++;
+        } else if (randomValue === 1) {
+            results.black++;
+        } else if (randomValue === 2) {
+            results.white++;
+            }
+        }
+
+    // вывод результата
+    document.getElementById("result").innerHTML = `
+        Симуляция выполнена ${iterations.toLocaleString()} раз.<br>
+        Красное (0) выпало: ${results.red.toLocaleString()} раз.<br>
+        Черное (1) выпало: ${results.black.toLocaleString()} раз.<br>
+        Белое (2) выпало: ${results.white.toLocaleString()} раз.<br>
+        Максимальное количество раз выпало красное значение: ${results.red.toLocaleString()}.
+        `;
+     }
+</script>
+</body>
+</html>

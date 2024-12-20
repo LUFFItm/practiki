@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проверка строки и номера телефона</title>
+</head>
+<body>
+<h1>Проверка первой цифры и номера телефона</h1>
+    <p id="output"></p>
+
+<script>
+    const str = "1234567890";  
+    const phoneNumber = "1234567890"; 
+    let firstDigitCheck;
+    switch (str[0]) {
+        case '1':
+        case '2':
+        case '3':
+            firstDigitCheck = 'Первая цифра 1, 2 или 3';
+            break;
+         default:
+            firstDigitCheck = 'нет';
+        }
+
+    let phoneCheck;
+    switch (true) {
+        case str.includes(phoneNumber):
+            phoneCheck = 'Номер телефона найден в строке';
+            break;
+        default:
+            phoneCheck = 'Номер телефона не найден в строке';
+        }
+
+    document.getElementById('output').innerHTML = `
+        ${firstDigitCheck}<br>
+        ${phoneCheck}
+        `;
+</script>
+
+</body>
+</html>

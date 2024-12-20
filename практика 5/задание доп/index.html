@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Симулятор случайных значений</title>
+</head>
+<body>
+<h1>Симулятор случайных значений</h1>
+
+<button onclick="runSimulation()">Запустить симуляцию</button>
+<p id="result"></p>
+
+<script>
+    const generateRandomValue = () => {
+        return Math.floor(Math.random() * 3); 
+    };
+
+    const runSimulation = () => {
+        const simulations = 1000000;
+        let maxSequence = 0;  
+        let currentSequence = 1; 
+        let lastValue = generateRandomValue(); 
+        let maxSequenceValue = lastValue; 
+
+    for (let i = 1; i < simulations; i++) {
+        const currentValue = generateRandomValue();
+        if (currentValue === lastValue) {
+            currentSequence++; 
+        } else {
+            currentSequence = 1; 
+            }
+
+            if (currentSequence > maxSequence) {
+                maxSequence = currentSequence; 
+                maxSequenceValue = currentValue; 
+            }
+
+            lastValue = currentValue; 
+        }
+
+        const colorMapping = ['красный', 'черный', 'белый'];
+        const resultText = `Самая длинная последовательность: ${maxSequence} значений цвета ${colorMapping[maxSequenceValue]}`;
+        document.getElementById("result").textContent = resultText;
+        };
+</script>
+</body>
+</html>

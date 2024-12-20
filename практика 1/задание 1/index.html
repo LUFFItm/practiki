@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #555;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1>Simple Calculator</h1>
+    <form id="calculator">
+         <input type="number" id="firstNumber" placeholder="Введите первое число" required>
+        <input type="number" id="secondNumber" placeholder="Введите второе число" required>
+        <select id="operation">
+            <option value="+">Сложение (+)</option>
+             <option value="-">Вычитание (-)</option>
+            <option value="*">Умножение (*)</option>
+             <option value="/">Деление (/)</option>
+        </select>
+        <button type="button" onclick="calculate()">Вычислить</button>
+        <div class="result" id="result"></div>
+        </form>
+    </div>
+    <script>
+        // функция для выполнения расчета
+    function calculate() {
+            // получаем значения из полей формы
+     const firstNumber = parseFloat(document.getElementById('firstNumber').value);
+     const secondNumber = parseFloat(document.getElementById('secondNumber').value);
+     const operation = document.getElementById('operation').value;
+     const resultElement = document.getElementById('result');
+
+    // проверяем, что введены числа
+     if (isNaN(firstNumber) || isNaN(secondNumber)) {
+            resultElement.textContent = 'Ошибка: Введите корректные числа!';
+            return;
+        }
+
+    // выполняем арифметическую операцию
+    let result;
+    switch (operation) {
+        case '+':
+            result = firstNumber + secondNumber;
+                break;
+        case '-':
+            result = firstNumber - secondNumber;
+                break;
+        case '*':
+            result = firstNumber * secondNumber;
+                break;
+        case '/':
+                if (secondNumber !== 0) {
+                    result = firstNumber / secondNumber;
+         } else {
+                    resultElement.textContent = 'Ошибка: Деление на ноль!';
+                    return;
+                }
+        break;
+        default:
+        resultElement.textContent = 'Ошибка: Некорректная операция!';
+        return;
+            }
+
+// результат
+resultElement.textContent = `Результат: ${result}`;
+        }
+    </script>
+</body>
+</html>

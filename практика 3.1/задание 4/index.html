@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Функция-конструктор: Студент</title>
+</head>
+<body>
+<h1>Создание объекта "Студент"</h1>
+<button onclick="createStudent()">Создать студента</button>
+<p id="result"></p>
+
+ <script>
+function Student(name, age, group, university) {
+    this.name = name; 
+    this.age = age; 
+    this.group = group; 
+    this.university = university; 
+    this.getInfo = function() {
+                
+        return `Имя: ${this.name}, Возраст: ${this.age}, Группа: ${this.group}, Университет: ${this.university}`;
+        };
+    }
+
+function createStudent() {
+    const student = new Student("Питер Паркер", 21, "Группа 1", "Оксфордский университет");
+    document.getElementById("result").innerHTML = `
+         Информация о студенте: <br>${student.getInfo()}
+         `;
+    }
+</script>
+</body>
+</html>
